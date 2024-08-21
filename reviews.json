@@ -1,0 +1,125 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Sarah Thompson",
+        "subject": "Introduction to Psychology",
+        "stars": 5,
+        "review": "Dr. Thompson is amazing! Her lectures are engaging, and she really cares about her students."
+      },
+      {
+        "professor": "Prof. David Kim",
+        "subject": "Calculus I",
+        "stars": 4,
+        "review": "Prof. Kim is very knowledgeable, but his lectures can be a bit fast-paced. Still, he’s always available for questions."
+      },
+      {
+        "professor": "Dr. Emily Roberts",
+        "subject": "Organic Chemistry",
+        "stars": 3,
+        "review": "Challenging course, but Dr. Roberts does her best to make it understandable. Could be more organized."
+      },
+      {
+        "professor": "Prof. Michael Allen",
+        "subject": "World History",
+        "stars": 5,
+        "review": "Prof. Allen brings history to life! His stories make the material unforgettable."
+      },
+      {
+        "professor": "Dr. Rebecca Lee",
+        "subject": "Environmental Science",
+        "stars": 2,
+        "review": "Dr. Lee knows her stuff, but her lectures are often dry and hard to follow."
+      },
+      {
+        "professor": "Prof. James Collins",
+        "subject": "Computer Science 101",
+        "stars": 4,
+        "review": "Great professor! Clear explanations and very supportive. Labs can be tough, though."
+      },
+      {
+        "professor": "Dr. Amanda Foster",
+        "subject": "Sociology",
+        "stars": 5,
+        "review": "Dr. Foster is passionate and insightful. I’ve learned so much from her class."
+      },
+      {
+        "professor": "Prof. Daniel Green",
+        "subject": "Macroeconomics",
+        "stars": 3,
+        "review": "Decent lecturer, but the material is tough. You’ll need to study hard outside of class."
+      },
+      {
+        "professor": "Dr. Laura Hernandez",
+        "subject": "Genetics",
+        "stars": 4,
+        "review": "Dr. Hernandez makes a complex subject understandable. Her enthusiasm is contagious."
+      },
+      {
+        "professor": "Prof. Robert White",
+        "subject": "Philosophy 101",
+        "stars": 2,
+        "review": "Lectures are a bit confusing, and the grading is harsh. Not my favorite class."
+      },
+      {
+        "professor": "Dr. Jennifer Parker",
+        "subject": "Creative Writing",
+        "stars": 5,
+        "review": "Dr. Parker is a gem! She’s encouraging and gives constructive feedback that really helps you grow as a writer."
+      },
+      {
+        "professor": "Prof. William Scott",
+        "subject": "Physics II",
+        "stars": 3,
+        "review": "Prof. Scott is knowledgeable, but his lectures can be a bit dry. Study sessions are a must."
+      },
+      {
+        "professor": "Dr. Linda Adams",
+        "subject": "Microbiology",
+        "stars": 4,
+        "review": "Dr. Adams is thorough and passionate. Labs are intense but very rewarding."
+      },
+      {
+        "professor": "Prof. John Baker",
+        "subject": "Political Science",
+        "stars": 5,
+        "review": "Prof. Baker is engaging and makes you think critically about current events. Highly recommend!"
+      },
+      {
+        "professor": "Dr. Patricia Davis",
+        "subject": "Statistics",
+        "stars": 3,
+        "review": "Dr. Davis is good, but the material is tough. Be prepared to spend extra time on homework."
+      },
+      {
+        "professor": "Prof. Kevin Martinez",
+        "subject": "Art History",
+        "stars": 4,
+        "review": "Prof. Martinez is passionate and knows his art! His classes are interesting and enjoyable."
+      },
+      {
+        "professor": "Dr. Barbara Wilson",
+        "subject": "Literature",
+        "stars": 5,
+        "review": "Dr. Wilson is fantastic! Her love for literature is evident, and she inspires the same in her students."
+      },
+      {
+        "professor": "Prof. Richard Moore",
+        "subject": "Calculus II",
+        "stars": 2,
+        "review": "Lectures are tough to follow, and the exams are even tougher. Not an easy class."
+      },
+      {
+        "professor": "Dr. Angela Johnson",
+        "subject": "Biochemistry",
+        "stars": 4,
+        "review": "Dr. Johnson is very knowledgeable, and her passion for the subject shows. Labs are challenging but fair."
+      },
+      {
+        "professor": "Prof. Mark Thompson",
+        "subject": "Psychology of Learning",
+        "stars": 5,
+        "review": "Prof. Thompson is one of the best! His lectures are engaging, and he really cares about his students’ success."
+      }
+    ]
+  }
+  
