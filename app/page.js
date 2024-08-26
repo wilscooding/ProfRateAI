@@ -2,16 +2,32 @@
 
 import { Box, TextField, Button, Stack } from "@mui/material";
 import { useState } from "react";
+import ReactMarkdown from 'react-markdown';
+
+const MarkdownRenderer = ({ children }) => (
+  <ReactMarkdown
+    components={{
+      p: ({ children }) => <p style={{ marginBottom: '10px' }}>{children}</p>,
+      h1: ({ children }) => <h1 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '10px' }}>{children}</h1>,
+      h2: ({ children }) => <h2 style={{ fontSize: '1.3em', fontWeight: 'bold', marginBottom: '8px' }}>{children}</h2>,
+      strong: ({ children }) => <strong style={{ fontWeight: 'bold' }}>{children}</strong>,
+      ul: ({ children }) => <ul style={{ paddingLeft: '20px', marginBottom: '10px' }}>{children}</ul>,
+      li: ({ children }) => <li style={{ marginBottom: '5px' }}>{children}</li>,
+    }}
+  >
+    {children}
+  </ReactMarkdown>
+);
 
 export default function Home() {
-	const [messages, setMessages] = useState([
-		{
-			role: "assistant",
-			content: "Hello, how can I help you?",
-		},
-	]);
+  const [messages, setMessages] = useState([
+    {
+      role: "assistant",
+      content: "Hello, how can I help you?",
+    },
+  ]);
 
-	const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
 	const sendMessage = async () => {
 		if (message.trim() === "") return; // Avoid sending empty messages
@@ -63,7 +79,8 @@ export default function Home() {
 		}
 	};
 
-	return (
+
+  return (
     <Box
       sx={{
         width: "100%",
@@ -72,7 +89,7 @@ export default function Home() {
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        background: "linear-gradient(to bottom, #4A90E2, #9013FE)", // Gradient background
+        background: "linear-gradient(to bottom, #4A90E2, #9013FE)",
         padding: "20px",
       }}
     >
@@ -95,20 +112,26 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  color: msg.role === "assistant" ? "#ffffff" : "#000000", // White for assistant, black for user
+                  backgroundColor: msg.role === "assistant" ? "#E5E5EA" : "#007AFF",
+                  color: msg.role === "assistant" ? "#000000" : "#FFFFFF",
                   p: 2,
-                  maxWidth: "95%",
+                  maxWidth: "80%",
                   fontFamily: "Arial, sans-serif",
-                  textAlign: msg.role === "assistant" ? "left" : "right", // Align text based on role
+                  borderRadius: "20px",
+                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                  position: "relative",
                 }}
               >
-                {msg.content}
+                {msg.role === "assistant" ? (
+                  <MarkdownRenderer>{msg.content}</MarkdownRenderer>
+                ) : (
+                  msg.content
+                )}
               </Box>
             </Box>
           ))}
         </Stack>
       </Box>
-
       <Box
         sx={{
           width: "100%",
@@ -145,4 +168,4 @@ export default function Home() {
       </Box>
     </Box>
   );
-};
+}
