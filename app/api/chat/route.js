@@ -18,7 +18,6 @@ You are an intelligent assistant designed to help students find the best profess
 5. **Offer Additional Assistance**: Ask if the user needs further details about the professor(s) or additional help with other queries related to their academic interests.
 `;
 
-
 async function getEmbeddings(texts) {
 	const modelId = "sentence-transformers/all-MiniLM-L6-v2"; // Adjust the model ID if needed
 	const hfToken = process.env.HUGGINGFACE_API_KEY;
@@ -48,8 +47,6 @@ async function getEmbeddings(texts) {
 }
 
 export async function POST(request) {
-	console.log("GROQ_API_KEY:", process.env.GROQ_API_KEY);
-
 	const data = await request.json();
 	const pc = new Pinecone({
 		apiKey: process.env.PINECONE_API_KEY,
@@ -67,7 +64,6 @@ export async function POST(request) {
 	try {
 		const embeddings = await getEmbeddings([userQuery]);
 		embeddingArray = embeddings[0]; // Get the first embedding
-		console.log("Embedding Response:", embeddingArray);
 	} catch (error) {
 		console.error(
 			"Error creating embedding with Universal Sentence Encoder:",
