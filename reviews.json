@@ -1,0 +1,130 @@
+{
+	"reviews": [
+		{
+			"professor": "Dr. Alice Johnson",
+			"subject": "Mathematics",
+			"stars": 4,
+			"review": "Dr. Johnson is an excellent professor who explains concepts clearly and is always available for extra help."
+		},
+		{
+			"professor": "Prof. Bob Smith",
+			"subject": "Computer Science",
+			"stars": 5,
+			"review": "Prof. Smith is very knowledgeable and makes complex topics easy to understand. Highly recommended!"
+		},
+		{
+			"professor": "Dr. Carol Williams",
+			"subject": "Biology",
+			"stars": 3,
+			"review": "Dr. Williams is good, but the lectures can be a bit dry at times. The material is still well covered."
+		},
+		{
+			"professor": "Dr. David Brown",
+			"subject": "Chemistry",
+			"stars": 4,
+			"review": "Dr. Brown is engaging and makes chemistry interesting. Labs are well-organized and informative."
+		},
+		{
+			"professor": "Prof. Emily Davis",
+			"subject": "Physics",
+			"stars": 2,
+			"review": "Prof. Davis's lectures are hard to follow. Needs to work on clarity and organization."
+		},
+		{
+			"professor": "Dr. Frank Miller",
+			"subject": "Economics",
+			"stars": 5,
+			"review": "Dr. Miller is fantastic. His real-world examples make economics easy to grasp and enjoyable."
+		},
+		{
+			"professor": "Prof. Grace Wilson",
+			"subject": "History",
+			"stars": 4,
+			"review": "Prof. Wilson is very passionate about history. Her classes are engaging and well-structured."
+		},
+		{
+			"professor": "Dr. Henry Moore",
+			"subject": "English Literature",
+			"stars": 3,
+			"review": "Dr. Moore's classes are insightful but can be quite challenging. Requires a lot of reading."
+		},
+		{
+			"professor": "Prof. Ivy Taylor",
+			"subject": "Philosophy",
+			"stars": 4,
+			"review": "Prof. Taylor encourages critical thinking and discussion. Her lectures are thought-provoking and stimulating."
+		},
+		{
+			"professor": "Dr. Jack Anderson",
+			"subject": "Political Science",
+			"stars": 5,
+			"review": "Dr. Anderson is very knowledgeable and passionate about politics. Classes are interactive and engaging."
+		},
+		{
+			"professor": "Prof. Karen Thomas",
+			"subject": "Psychology",
+			"stars": 3,
+			"review": "Prof. Thomas is good but sometimes the material is presented in a disorganized manner."
+		},
+		{
+			"professor": "Dr. Larry Jackson",
+			"subject": "Sociology",
+			"stars": 4,
+			"review": "Dr. Jackson provides a comprehensive understanding of sociology. His lectures are well-organized and insightful."
+		},
+		{
+			"professor": "Prof. Maria Martinez",
+			"subject": "Art History",
+			"stars": 5,
+			"review": "Prof. Martinez brings art history to life with her engaging teaching style and deep knowledge."
+		},
+		{
+			"professor": "Dr. Nathan Lee",
+			"subject": "Engineering",
+			"stars": 2,
+			"review": "Dr. Lee is knowledgeable but his lectures are often confusing and unstructured."
+		},
+		{
+			"professor": "Prof. Olivia Robinson",
+			"subject": "Statistics",
+			"stars": 4,
+			"review": "Prof. Robinson makes complex statistics concepts easier to understand with her clear explanations."
+		},
+		{
+			"professor": "Dr. Paul Walker",
+			"subject": "Environmental Science",
+			"stars": 3,
+			"review": "Dr. Walker covers the material well but his lectures can be a bit monotonous."
+		},
+		{
+			"professor": "Prof. Quinn Lewis",
+			"subject": "Business Administration",
+			"stars": 4,
+			"review": "Prof. Lewis provides valuable insights into business practices and is very approachable."
+		},
+		{
+			"professor": "Dr. Rachel Young",
+			"subject": "Linguistics",
+			"stars": 5,
+			"review": "Dr. Young is an excellent linguistics professor who makes learning fun and engaging."
+		},
+		{
+			"professor": "Prof. Steve Wright",
+			"subject": "Music",
+			"stars": 4,
+			"review": "Prof. Wright is very enthusiastic about music and his classes are both educational and enjoyable."
+		},
+		{
+			"professor": "Dr. Tina Harris",
+			"subject": "Law",
+			"stars": 3,
+			"review": "Dr. Harris's classes are informative but can be quite demanding and fast-paced."
+		},
+		{
+			"professor": "Prof. Ursula Clark",
+			"subject": "Theater",
+			"stars": 5,
+			"review": "Prof. Clark is incredibly passionate about theater and brings a lot of energy to her classes."
+		}
+	]
+}
