@@ -1,171 +1,114 @@
 "use client";
 
-import { Box, TextField, Button, Stack } from "@mui/material";
-import { useState } from "react";
-import ReactMarkdown from 'react-markdown';
+import { Box, Typography, Button, Container, AppBar, Toolbar, IconButton } from "@mui/material";
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
-const MarkdownRenderer = ({ children }) => (
-  <ReactMarkdown
-    components={{
-      p: ({ children }) => <p style={{ marginBottom: '10px' }}>{children}</p>,
-      h1: ({ children }) => <h1 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '10px' }}>{children}</h1>,
-      h2: ({ children }) => <h2 style={{ fontSize: '1.3em', fontWeight: 'bold', marginBottom: '8px' }}>{children}</h2>,
-      strong: ({ children }) => <strong style={{ fontWeight: 'bold' }}>{children}</strong>,
-      ul: ({ children }) => <ul style={{ paddingLeft: '20px', marginBottom: '10px' }}>{children}</ul>,
-      li: ({ children }) => <li style={{ marginBottom: '5px' }}>{children}</li>,
-    }}
-  >
-    {children}
-  </ReactMarkdown>
-);
+const Navbar = () => {
+  return (
+    <AppBar position="static" color="transparent" elevation={0}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Image
+              src="/imgs/logo.png" 
+              alt="ProfessorPal Logo"
+              width={40}
+              height={40}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                ml: 2,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              ProfessorPal
+            </Typography>
+          </Box>
 
-export default function Home() {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: "Hello, how can I help you?",
-    },
-  ]);
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button color="inherit" href="/about">About</Button>
+            <Button color="inherit" variant="outlined" href="/login">Login</Button>
+            <Button color="inherit" variant="contained" href="/signup">Sign Up</Button>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
 
-  const [message, setMessage] = useState("");
-
-	const sendMessage = async () => {
-		if (message.trim() === "") return; // Avoid sending empty messages
-
-		// Add user message to chat
-		setMessages((prevMessages) => [
-			...prevMessages,
-			{ role: "user", content: message },
-		]);
-
-		setMessage("");
-		try {
-			const response = await fetch("/api/chat", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify([
-					...messages,
-					{ role: "user", content: message },
-				]),
-			});
-
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-
-			const reader = response.body.getReader();
-			const decoder = new TextDecoder();
-
-			let result = "";
-			while (true) {
-				const { done, value } = await reader.read();
-				if (done) break;
-				const text = decoder.decode(value || new Uint8Array(), {
-					stream: true,
-				});
-				result += text;
-			}
-
-			// Add assistant's response to chat
-			setMessages((prevMessages) => [
-				...prevMessages,
-				{ role: "assistant", content: result },
-			]);
-		} catch (error) {
-			console.error("Error sending message:", error);
-			// Handle errors as appropriate
-		}
-	};
-
+export default function LandingPage() {
+  const router = useRouter();
 
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "100vh",
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom right, #4A90E2, #9013FE)",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        background: "linear-gradient(to bottom, #4A90E2, #9013FE)",
-        padding: "20px",
+        color: "white",
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "800px",
-          flexGrow: 1,
-          overflowY: "auto",
-          padding: "20px",
-          boxSizing: "border-box",
+      <Navbar />
+      <Container 
+        maxWidth="md" 
+        sx={{ 
+          flexGrow: 1, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          alignItems: 'center',
+          textAlign: "center",
         }}
       >
-        <Stack spacing={2}>
-          {messages.map((msg, index) => (
-            <Box
-              key={index}
-              display={"flex"}
-              justifyContent={msg.role === "assistant" ? "flex-start" : "flex-end"}
-            >
-              <Box
-                sx={{
-                  backgroundColor: msg.role === "assistant" ? "#E5E5EA" : "#007AFF",
-                  color: msg.role === "assistant" ? "#000000" : "#FFFFFF",
-                  p: 2,
-                  maxWidth: "80%",
-                  fontFamily: "Arial, sans-serif",
-                  borderRadius: "20px",
-                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
-                  position: "relative",
-                }}
-              >
-                {msg.role === "assistant" ? (
-                  <MarkdownRenderer>{msg.content}</MarkdownRenderer>
-                ) : (
-                  msg.content
-                )}
-              </Box>
-            </Box>
-          ))}
-        </Stack>
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "800px",
-          display: "flex",
-          alignItems: "center",
-          borderTop: "1px solid #ddd",
-          padding: "10px 0",
-        }}
-      >
-        <TextField
-          label={"Message"}
-          fullWidth
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          variant="outlined"
-          sx={{
-            borderRadius: "8px",
-            backgroundColor: "white",
-            marginRight: "10px",
-          }}
-        />
-        <Button
-          variant="contained"
-          onClick={sendMessage}
-          sx={{
-            minWidth: "80px",
-            borderRadius: "8px",
-            backgroundColor: "primary.main",
+        <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 'bold' }}>
+          Welcome to ProfessorPal
+        </Typography>
+        <Typography variant="h2" component="h2" gutterBottom sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, mb: 4 }}>
+          Your AI-powered guide to finding the perfect professor
+        </Typography>
+        <Typography variant="body1" paragraph sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, mb: 4 }}>
+          ProfessorPal uses advanced AI to help you find the ideal professor based on your preferences. 
+          Whether you're looking for engaging lectures, manageable workloads, or specific teaching styles, 
+          we've got you covered.
+        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+          <Typography variant="h3" component="h3" sx={{ fontSize: { xs: '1.2rem', md: '1.5rem' }, fontWeight: 'bold' }}>
+            Key Features:
+          </Typography>
+          <ul style={{ textAlign: 'left', marginBottom: '2rem' }}>
+            <li>Personalized professor recommendations</li>
+            <li>Insights based on real student reviews</li>
+            <li>Easy-to-use chat interface</li>
+            <li>Helps you make informed decisions about your courses</li>
+          </ul>
+        </Box>
+        <Button 
+          variant="contained" 
+          size="large"
+          onClick={() => router.push('/chat')}
+          sx={{ 
+            fontSize: '1.2rem', 
+            padding: '12px 24px', 
+            backgroundColor: '#FFD700', 
+            color: '#000',
+            '&:hover': {
+              backgroundColor: '#FFC500',
+            }
           }}
         >
-          Send
+          Start Chatting Now
         </Button>
-      </Box>
+      </Container>
     </Box>
   );
 }
