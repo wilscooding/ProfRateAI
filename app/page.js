@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Box, TextField, Button, Stack } from "@mui/material";
@@ -65,63 +64,85 @@ export default function Home() {
 	};
 
 	return (
-		<Box
-			width={"100%"}
-			height={"100vh"}
-			display={"flex"}
-			flexDirection={"column"}
-			justifyContent={"center"}
-			alignItems={"center"}
-		>
-			<Stack
-				direction="column"
-				width="500px"
-				height="700px"
-				border="1px solid black"
-				p={2}
-				spacing={3}
-			>
-				<Stack
-					direction={"column"}
-					spacing={2}
-					flexGrow={1}
-					overflow={"auto"}
-					maxHeight={"100%"}
-				>
-					{messages.map((msg, index) => (
-						<Box
-							key={index}
-							display={"flex"}
-							justifyContent={
-								msg.role === "assistant" ? "flex-start" : "flex-end"
-							}
-						>
-							<Box
-								bgcolor={
-									msg.role === "assistant" ? "primary.main" : "secondary.main"
-								}
-								color={"white"}
-								borderRadius={16}
-								p={2}
-								maxWidth={"80%"}
-							>
-								{msg.content}
-							</Box>
-						</Box>
-					))}
-				</Stack>
-				<Stack direction={"row"} spacing={2} mt={2}>
-					<TextField
-						label={"Message"}
-						fullWidth
-						value={message}
-						onChange={(e) => setMessage(e.target.value)}
-					/>
-					<Button variant="contained" onClick={sendMessage}>
-						Send
-					</Button>
-				</Stack>
-			</Stack>
-		</Box>
-	);
-}
+    <Box
+      sx={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        background: "linear-gradient(to bottom, #4A90E2, #9013FE)", // Gradient background
+        padding: "20px",
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "800px",
+          flexGrow: 1,
+          overflowY: "auto",
+          padding: "20px",
+          boxSizing: "border-box",
+        }}
+      >
+        <Stack spacing={2}>
+          {messages.map((msg, index) => (
+            <Box
+              key={index}
+              display={"flex"}
+              justifyContent={msg.role === "assistant" ? "flex-start" : "flex-end"}
+            >
+              <Box
+                sx={{
+                  color: msg.role === "assistant" ? "#ffffff" : "#000000", // White for assistant, black for user
+                  p: 2,
+                  maxWidth: "95%",
+                  fontFamily: "Arial, sans-serif",
+                  textAlign: msg.role === "assistant" ? "left" : "right", // Align text based on role
+                }}
+              >
+                {msg.content}
+              </Box>
+            </Box>
+          ))}
+        </Stack>
+      </Box>
+
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "800px",
+          display: "flex",
+          alignItems: "center",
+          borderTop: "1px solid #ddd",
+          padding: "10px 0",
+        }}
+      >
+        <TextField
+          label={"Message"}
+          fullWidth
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          variant="outlined"
+          sx={{
+            borderRadius: "8px",
+            backgroundColor: "white",
+            marginRight: "10px",
+          }}
+        />
+        <Button
+          variant="contained"
+          onClick={sendMessage}
+          sx={{
+            minWidth: "80px",
+            borderRadius: "8px",
+            backgroundColor: "primary.main",
+          }}
+        >
+          Send
+        </Button>
+      </Box>
+    </Box>
+  );
+};

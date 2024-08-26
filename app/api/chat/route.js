@@ -4,16 +4,48 @@ import { Pinecone } from "@pinecone-database/pinecone";
 const systemPrompt = `
 You are an intelligent assistant designed to help students find the best professors based on their academic needs and preferences. Your task is to provide accurate and relevant recommendations using the Retrieval-Augmented Generation (RAG) model. When a user asks for information about professors, follow these steps:
 
-Understand the Query: Analyze the user's question to identify the subject area, course, or specific qualities they are looking for in a professor (e.g., teaching style, difficulty, course content).
+1. **Understand the Query**: Analyze the user's question to identify the subject area, course, or specific qualities they are looking for in a professor (e.g., teaching style, difficulty, course content).
 
-Retrieve Information: Use the RAG model to search for relevant data about professors. Gather information on professor ratings, student reviews, and course feedback to build a comprehensive profile of potential candidates.
+2. **Retrieve Information**: Use the RAG model to search for relevant data about professors. Gather information on professor ratings, student reviews, and course feedback to build a comprehensive profile of potential candidates.
 
-Rank and Select: Based on the retrieved information, rank the professors according to their suitability for the user's query. Focus on factors such as high ratings, positive feedback, and alignment with the user’s preferences.
+3. **Rank and Select**: Based on the retrieved information, rank the professors according to their suitability for the user's query. Focus on factors such as high ratings, positive feedback, and alignment with the user’s preferences.
 
-Provide Recommendations: Present the top three professors that best match the user's query. Include brief summaries of each professor’s strengths and any notable comments from student reviews. Make sure to highlight why each recommendation is relevant to the user's request.
+4. **Provide Recommendations**: Present the professor(s) that best match the user's query. Format the response clearly with distinct sections for each professor and their details. For example:
+   - **Professor Name (Department)**
+     - **Rating:** [Rating Stars]
+     - **Summary:** [Brief summary of strengths and notable feedback]
 
-Offer Additional Assistance: If applicable, ask if the user needs further details about the professors or additional help with other queries related to their academic interests.
+5. **Offer Additional Assistance**: Ask if the user needs further details about the professor(s) or additional help with other queries related to their academic interests.
 `;
+
+
+async function getEmbeddings(texts) {
+	const modelId = "sentence-transformers/all-MiniLM-L6-v2"; // Adjust the model ID if needed
+	const hfToken = process.env.HUGGINGFACE_API_KEY;
+
+	const apiUrl = `https://api-inference.huggingface.co/pipeline/feature-extraction/${modelId}`;
+	const headers = {
+		Authorization: `Bearer ${hfToken}`,
+		"Content-Type": "application/json",
+	};
+
+	const response = await fetch(apiUrl, {
+		method: "POST",
+		headers: headers,
+		body: JSON.stringify({
+			inputs: texts,
+			options: {
+				wait_for_model: true,
+			},
+		}),
+	});
+
+	if (!response.ok) {
+		throw new Error(`Error: ${response.status} ${response.statusText}`);
+	}
+
+	return await response.json();
+}
 
 export async function POST(request) {
 	console.log("GROQ_API_KEY:", process.env.GROQ_API_KEY);
@@ -116,32 +148,4 @@ Stars: ${match.metadata.stars}\n`;
 	});
 
 	return new Response(stream);
-}
-
-async function getEmbeddings(texts) {
-	const modelId = "sentence-transformers/all-MiniLM-L6-v2"; // Adjust the model ID if needed
-	const hfToken = process.env.HUGGINGFACE_API_KEY;
-
-	const apiUrl = `https://api-inference.huggingface.co/pipeline/feature-extraction/${modelId}`;
-	const headers = {
-		Authorization: `Bearer ${hfToken}`,
-		"Content-Type": "application/json",
-	};
-
-	const response = await fetch(apiUrl, {
-		method: "POST",
-		headers: headers,
-		body: JSON.stringify({
-			inputs: texts,
-			options: {
-				wait_for_model: true,
-			},
-		}),
-	});
-
-	if (!response.ok) {
-		throw new Error(`Error: ${response.status} ${response.statusText}`);
-	}
-
-	return await response.json();
 }
