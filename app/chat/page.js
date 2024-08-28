@@ -3,6 +3,7 @@
 import { Box, TextField, Button, Stack } from "@mui/material";
 import { useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import Navbar from '../components/navbar.js';
 
 const MarkdownRenderer = ({ children }) => (
   <ReactMarkdown
@@ -93,6 +94,17 @@ export default function Home() {
         padding: "20px",
       }}
     >
+      <Navbar />
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px",
+        }}
+      ></Box>
       <Box
         sx={{
           width: "100%",
