@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 # ProfRateAI
-=======
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-=======
-# ProfRateAI
->>>>>>> Stashed changes
 
 ## Overview
 
@@ -23,7 +17,7 @@ ProfRateAI is an innovative Next.js application designed to help students find t
 - **Frontend**: React.js with Next.js framework
 - **Backend**: Node.js
 - **AI/ML**: Pinecone for vector database, Hugging Face for embeddings
-- **APIs**: Groq for natural language processing with llama 3-8b
+- **APIs**: Groq for natural language processing
 - **Styling**: Material-UI (MUI) for responsive design
 - **Data Storage**: JSON for review data
 
@@ -47,8 +41,8 @@ npm install
    Create a `.env.local` file in the root directory and add the following:
 
 PINECONE_API_KEY=your_pinecone_api_key
-GROQ_API_KEY=your_groq_api_key
-HUGGINGFACE_API_KEY=your_huggingface_api_key
+   GROQ_API_KEY=your_groq_api_key
+   HUGGINGFACE_API_KEY=your_huggingface_api_key
 
 5. Run the development server:
 
@@ -66,14 +60,8 @@ After starting the development server, open your browser and navigate to `http:/
 
 Contributions to ProfRateAI are welcome! To contribute:
 
-<<<<<<< Updated upstream
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
