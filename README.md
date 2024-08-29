@@ -40,9 +40,9 @@ npm install
 4. Set up environment variables:
    Create a `.env.local` file in the root directory and add the following:
 
-PINECONE_API_KEY=your_pinecone_api_key
-   GROQ_API_KEY=your_groq_api_key
-   HUGGINGFACE_API_KEY=your_huggingface_api_key
+PINECONE_API_KEY=your_pinecone_api_key,
+GROQ_API_KEY=your_groq_api_key,
+HUGGINGFACE_API_KEY=your_huggingface_api_key
 
 5. Run the development server:
 
